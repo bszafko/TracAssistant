@@ -77,12 +77,12 @@
     <Compile Include="Infrastructure\IoC.cs" />
     <Compile Include="Infrastructure\IView.cs" />
     <Compile Include="Infrastructure\IViewManager.cs" />
-    <Compile Include="ISettingsService.cs" />
+    <Compile Include="Services\ISettingsService.cs" />
     <Compile Include="Domain\Settings.cs" />
-    <Compile Include="ITracService.cs" />
+    <Compile Include="Services\ITracService.cs" />
     <Compile Include="Features\Settings\SettingsViewModel.cs" />
     <Compile Include="Domain\Ticket.cs" />
-    <Compile Include="SettingsService.cs" />
+    <Compile Include="Services\SettingsService.cs" />
     <Compile Include="Specs\BootstrapperSpecs.cs" />
     <Compile Include="Specs\SettingsSpecs.cs" />
     <Compile Include="Specs\AddTicketSpecs.cs" />

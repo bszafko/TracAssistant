@@ -1,0 +1,3 @@
+[submodule "Third Party/Machine.Specifications.AutoMocking"]
+	path = Third Party/Machine.Specifications.AutoMocking
+	url = git@github.com:bszafko/Machine.Specifications.AutoMocking.git
