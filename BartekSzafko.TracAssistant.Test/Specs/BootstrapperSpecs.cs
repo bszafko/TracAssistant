@@ -6,6 +6,7 @@ using Machine.Specifications;
 using BartekSzafko.TracAssistant.Test.Infrastructure;
 using Machine.Specifications.AutoMocking.Rhino;
 using Rhino.Mocks;
+using BartekSzafko.TracAssistant.Test.Features.AddTicket;
 
 namespace BartekSzafko.TracAssistant.Test
 {
@@ -22,7 +23,7 @@ namespace BartekSzafko.TracAssistant.Test
 
         private It Should_display_add_new_ticket_screen = () =>
         {
-            viewManager.AssertWasCalled(x => x.Show(typeof(AddTicketView)));
+            viewManager.AssertWasCalled(x => x.Show(typeof(IAddTicketView)));
         };
 
         private static IBootstrapper bootstrapper;

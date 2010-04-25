@@ -11,7 +11,7 @@ namespace BartekSzafko.TracAssistant.Test.Domain
         Ntlm
     }
 
-    public class Settings
+    public class Settings : BartekSzafko.TracAssistant.Test.Domain.ISettings
     {
         public Uri TracUrl { get; set; }
         public string Username { get; set; }

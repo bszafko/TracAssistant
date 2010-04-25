@@ -6,17 +6,20 @@ using Machine.Specifications;
 using Machine.Specifications.AutoMocking.Rhino;
 using Rhino.Mocks;
 using BartekSzafko.TracAssistant.Test.Domain;
+using BartekSzafko.TracAssistant.Test.Features.Settings;
+using BartekSzafko.TracAssistant.Test.Infrastructure;
 
 namespace BartekSzafko.TracAssistant.Test
 {
     [Subject("Settings screen")]
-    public class when_user_saves_valid_settings : Specification<SettingsViewModel>
+    public class when_user_saves_valid_settings : Specification<ISettingsViewModel>
     {
         private Establish Context = () =>
         {
             settingsService = An<ISettingsService>();
-            settings = new Settings();
-            settingsViewModel = new SettingsViewModel(settings);
+            settings = IoC.Resolve<ISettings>();
+            settingsViewModel = IoC.Resolve<ISettingsViewModel>();
+            settingsViewModel.Settings = settings;
         };
 
         private Because Of = () => settingsViewModel.SaveSettingsCommand.Execute(null);
@@ -31,8 +34,8 @@ namespace BartekSzafko.TracAssistant.Test
             settingsService.AssertWasCalled(x => x.Save(settings));
         };
 
-        private static Settings settings;
-        private static SettingsViewModel settingsViewModel;
+        private static ISettings settings;
+        private static ISettingsViewModel settingsViewModel;
         private static ISettingsService settingsService;
     }
 }

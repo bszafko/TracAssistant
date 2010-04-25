@@ -7,11 +7,12 @@ using BartekSzafko.TracAssistant.Test.Infrastructure;
 using Machine.Specifications.AutoMocking.Rhino;
 using Rhino.Mocks;
 using BartekSzafko.TracAssistant.Test.Domain;
+using BartekSzafko.TracAssistant.Test.Features.AddTicket;
 
 namespace BartekSzafko.TracAssistant.Test
 {
-    [Subject(typeof(AddTicketViewModel))]
-    public class when_a_user_opens_add_ticket_view : Specification<AddTicketViewModel>
+    [Subject(typeof(IAddTicketViewModel))]
+    public class when_a_user_opens_add_ticket_view : Specification<IAddTicketViewModel>
     {
         private Establish context = () =>
             {
@@ -20,7 +21,7 @@ namespace BartekSzafko.TracAssistant.Test
                 viewManager = IoC.Resolve<IViewManager>();
             };
 
-        private Because of = () => viewManager.Show(typeof(AddTicketView));
+        private Because of = () => viewManager.Show(typeof(IAddTicketView));
 
         private It should_connect_to_trac_instance = () =>
         {
@@ -36,7 +37,7 @@ namespace BartekSzafko.TracAssistant.Test
         private static ITracService tracService;
     }
 
-    [Subject(typeof(AddTicketViewModel))]
+    [Subject(typeof(IAddTicketViewModel))]
     public class when_an_error_occurs_during_adding_ticket : context_for_AddTicketViewModel
     {
         private Establish Context = () =>
@@ -66,7 +67,7 @@ namespace BartekSzafko.TracAssistant.Test
 
     }
 
-    [Subject(typeof(AddTicketViewModel))]
+    [Subject(typeof(IAddTicketViewModel))]
     public class when_user_adds_ticket : context_for_AddTicketViewModel
     {
         private Because Of = () =>
@@ -85,17 +86,17 @@ namespace BartekSzafko.TracAssistant.Test
         };                
     }
 
-    public class context_for_AddTicketViewModel : Specification<AddTicketViewModel>
+    public class context_for_AddTicketViewModel : Specification<IAddTicketViewModel>
     {
         private Establish Context = () =>
         {
             tracService = An<ITracService>();
-            addTicketViewModel = new AddTicketViewModel();
-            addTicketViewModel.Ticket = new Ticket();
+            addTicketViewModel = IoC.Resolve<IAddTicketViewModel>();
+            addTicketViewModel.Ticket = IoC.Resolve<ITicket>();
         };
 
         protected static ITracService tracService;
-        protected static AddTicketViewModel addTicketViewModel;
+        protected static IAddTicketViewModel addTicketViewModel;
     }
    
 }

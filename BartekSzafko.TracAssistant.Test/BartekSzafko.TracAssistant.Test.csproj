@@ -16,6 +16,7 @@
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
     <UpgradeBackupLocation />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -28,7 +29,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -71,8 +71,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Features\AddTicket\AddTicketView.cs" />
-    <Compile Include="Features\AddTicket\AddTicketViewModel.cs" />
+    <Compile Include="Domain\ISettings.cs" />
+    <Compile Include="Domain\ITicket.cs" />
+    <Compile Include="Features\AddTicket\IAddTicketView.cs" />
+    <Compile Include="Features\AddTicket\IAddTicketViewModel.cs" />
+    <Compile Include="Features\Settings\ISettingsViewModel.cs" />
     <Compile Include="Infrastructure\IBootstrapper.cs" />
     <Compile Include="Infrastructure\IoC.cs" />
     <Compile Include="Infrastructure\IView.cs" />
@@ -80,7 +83,6 @@
     <Compile Include="Services\ISettingsService.cs" />
     <Compile Include="Domain\Settings.cs" />
     <Compile Include="Services\ITracService.cs" />
-    <Compile Include="Features\Settings\SettingsViewModel.cs" />
     <Compile Include="Domain\Ticket.cs" />
     <Compile Include="Services\SettingsService.cs" />
     <Compile Include="Specs\BootstrapperSpecs.cs" />

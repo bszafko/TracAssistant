@@ -8,7 +8,7 @@ namespace BartekSzafko.TracAssistant.Test
 {
     public interface ISettingsService
     {
-        void Save(Settings settings);
-        Settings Load();
+        void Save(ISettings settings);
+        ISettings Load();
     }
 }

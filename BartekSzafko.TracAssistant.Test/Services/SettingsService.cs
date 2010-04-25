@@ -16,7 +16,7 @@ namespace BartekSzafko.TracAssistant.Test
 
         #region ISettingsService Members
 
-        public void Save(Domain.Settings settings)
+        public void Save(ISettings settings)
         {
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal);
             SettingsSection section = config.GetSection(SectionName) as SettingsSection;
@@ -32,7 +32,7 @@ namespace BartekSzafko.TracAssistant.Test
             config.Save();
         }
 
-        public Domain.Settings Load()
+        public ISettings Load()
         {
             SettingsSection section = ConfigurationManager.GetSection(SectionName) as SettingsSection;
             if (section == null)
@@ -45,7 +45,7 @@ namespace BartekSzafko.TracAssistant.Test
 
     public class SettingsSection : ConfigurationSection
     {
-        public Settings Settings { get; set; }
+        public ISettings Settings { get; set; }
         private XmlSerializer serializer;
         
         public SettingsSection()
@@ -53,10 +53,10 @@ namespace BartekSzafko.TracAssistant.Test
             serializer = new XmlSerializer(typeof(Settings));
         }
 
-        public SettingsSection(Settings settings)
+        public SettingsSection(ISettings settings)
         {
             Settings = settings;
-            XmlSerializer serializer = new XmlSerializer(typeof(Settings));
+            XmlSerializer serializer = new XmlSerializer(typeof(ISettings));
         }
 
         protected override string SerializeSection(ConfigurationElement parentElement, 

@@ -11,7 +11,7 @@ namespace BartekSzafko.TracAssistant.Test
     {
         void Connect();
         void GetInitData();
-        void AddTicket(Ticket ticket);
+        void AddTicket(ITicket ticket);
     }
 
 }

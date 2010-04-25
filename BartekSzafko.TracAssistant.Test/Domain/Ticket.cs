@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BartekSzafko.TracAssistant.Test.Domain
 {
-    public class Ticket
+    public class Ticket : BartekSzafko.TracAssistant.Test.Domain.ITicket
     {
         public DateTime Created { get; set; }
 
