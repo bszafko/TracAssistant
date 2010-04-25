@@ -75,6 +75,7 @@
     <Compile Include="Domain\ITicket.cs" />
     <Compile Include="Features\AddTicket\IAddTicketView.cs" />
     <Compile Include="Features\AddTicket\IAddTicketViewModel.cs" />
+    <Compile Include="Features\Settings\ISettingsView.cs" />
     <Compile Include="Features\Settings\ISettingsViewModel.cs" />
     <Compile Include="Infrastructure\IBootstrapper.cs" />
     <Compile Include="Infrastructure\IoC.cs" />

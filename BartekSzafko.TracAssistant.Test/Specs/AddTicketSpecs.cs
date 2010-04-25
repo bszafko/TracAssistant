@@ -8,6 +8,7 @@ using Machine.Specifications.AutoMocking.Rhino;
 using Rhino.Mocks;
 using BartekSzafko.TracAssistant.Test.Domain;
 using BartekSzafko.TracAssistant.Test.Features.AddTicket;
+using BartekSzafko.TracAssistant.Test.Features.Settings;
 
 namespace BartekSzafko.TracAssistant.Test
 {
@@ -15,11 +16,11 @@ namespace BartekSzafko.TracAssistant.Test
     public class when_a_user_opens_add_ticket_view : Specification<IAddTicketViewModel>
     {
         private Establish context = () =>
-            {
-                tracService = An<ITracService>();
-                IoC.RegisterInstance<ITracService>(tracService);
-                viewManager = IoC.Resolve<IViewManager>();
-            };
+        {
+            tracService = An<ITracService>();
+            IoC.RegisterInstance<ITracService>(tracService);
+            viewManager = IoC.Resolve<IViewManager>();
+        };
 
         private Because of = () => viewManager.Show(typeof(IAddTicketView));
 
@@ -38,7 +39,7 @@ namespace BartekSzafko.TracAssistant.Test
     }
 
     [Subject(typeof(IAddTicketViewModel))]
-    public class when_an_error_occurs_during_adding_ticket : context_for_AddTicketViewModel
+    public class when_an_error_occurs_during_adding_ticket : AddTicketViewModelContext
     {
         private Establish Context = () =>
         {
@@ -68,7 +69,7 @@ namespace BartekSzafko.TracAssistant.Test
     }
 
     [Subject(typeof(IAddTicketViewModel))]
-    public class when_user_adds_ticket : context_for_AddTicketViewModel
+    public class when_user_adds_ticket : AddTicketViewModelContext
     {
         private Because Of = () =>
         {
@@ -86,7 +87,42 @@ namespace BartekSzafko.TracAssistant.Test
         };                
     }
 
-    public class context_for_AddTicketViewModel : Specification<IAddTicketViewModel>
+    public class when_error_occured_and_user_choose_retry : AddTicketViewModelContext
+    {
+        private Establish Context = () =>
+        {
+            addTicketViewModel.ErrorScreen = true;
+        };
+
+        private Because Of = () => addTicketViewModel.RetryCommand.Execute(null);
+
+        private It should_call_trac_instance_to_add_ticket = () =>
+        {
+            tracService.AssertWasCalled(x => x.AddTicket(addTicketViewModel.Ticket));
+        };
+    }
+
+    public class when_error_occured_and_user_choose_to_show_settings : AddTicketViewModelContext
+    {
+        private Establish Context = () =>
+        {
+            addTicketViewModel.ErrorScreen = true;
+            viewManager = An<IViewManager>();
+            IoC.RegisterInstance<IViewManager>(viewManager);
+            addTicketViewModel = IoC.Resolve<IAddTicketViewModel>();
+        };
+
+        private Because Of = () => addTicketViewModel.OpenConfigurationCommand.Execute(null);
+
+        private It should_open_settings_view = () =>
+        {
+            viewManager.AssertWasCalled(x => x.Show(typeof(ISettingsView)));
+        };
+
+        private static IViewManager viewManager;
+    }
+
+    public class AddTicketViewModelContext : Specification<IAddTicketViewModel>
     {
         private Establish Context = () =>
         {
