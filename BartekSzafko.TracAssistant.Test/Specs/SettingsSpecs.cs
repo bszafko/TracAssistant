@@ -11,7 +11,7 @@ using BartekSzafko.TracAssistant.Test.Infrastructure;
 
 namespace BartekSzafko.TracAssistant.Test
 {
-    [Subject("Settings screen")]
+    [Subject(typeof(ISettingsViewModel))]
     public class when_user_saves_valid_settings : Specification<ISettingsViewModel>
     {
         private Establish Context = () =>

@@ -11,7 +11,7 @@ using BartekSzafko.TracAssistant.Test.Features.AddTicket;
 namespace BartekSzafko.TracAssistant.Test
 {
     [Subject(typeof(IBootstrapper))]
-    public class When_a_user_opens_add_ticket_view : Specification<IBootstrapper>
+    public class when_a_user_starts_application : Specification<IBootstrapper>
     {
         private Establish Context = () =>
             {
@@ -21,7 +21,7 @@ namespace BartekSzafko.TracAssistant.Test
 
         private Because Of = () => bootstrapper.Startup();
 
-        private It Should_display_add_new_ticket_screen = () =>
+        private It should_display_add_new_ticket_screen = () =>
         {
             viewManager.AssertWasCalled(x => x.Show(typeof(IAddTicketView)));
         };
