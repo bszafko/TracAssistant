@@ -8,8 +8,8 @@
     <ProjectGuid>{109A1CB5-F5E2-4B7D-8898-EBD1DDD55DD3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BartekSzafko.TracAssistant.Test</RootNamespace>
-    <AssemblyName>BartekSzafko.TracAssistant.Test</AssemblyName>
+    <RootNamespace>BartekSzafko.TracAssistant.Specs</RootNamespace>
+    <AssemblyName>BartekSzafko.TracAssistant.Specs</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
@@ -62,16 +62,17 @@
     <Reference Include="System.Windows.Presentation" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BootstrapperSpecs.cs" />
-    <Compile Include="SettingsSpecs.cs" />
-    <Compile Include="AddTicketSpecs.cs" />
+    <Compile Include="As\An user\I want\to add a new ticket\AddTicketViewModelContext.cs" />
+    <Compile Include="As\An user\I want\to add a new ticket\when\an_error_occured_during_adding_a_new_ticket.cs" />
+    <Compile Include="As\An user\I want\to add a new ticket\when\i_add_a_new_ticket.cs" />
+    <Compile Include="As\An user\I want\to add a new ticket\when\i_open_add_ticket_view.cs" />
+    <Compile Include="As\An user\I want\to add a new ticket\when\i_retry_adding_a_new_ticket_after_an_error_ocurred.cs" />
+    <Compile Include="As\An user\I want\to open settings\when\i_open_settings_after_error_ocurred_during_ticket_add.cs" />
+    <Compile Include="As\An user\I want\to start application\when\i_start_the_application.cs" />
+    <Compile Include="As\An user\I want\to save settings\when\i_save_valid_settings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Inspiracje\machine.specifications\Source\Machine.Specifications\Machine.Specifications.csproj">
-      <Project>{CCD02629-1262-4F78-9E9F-AC97B942D0E7}</Project>
-      <Name>Machine.Specifications</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BartekSzafko.TracAsistant\BartekSzafko.TracAsistant\BartekSzafko.TracAsistant.csproj">
       <Project>{3587DA4A-FF7E-4C87-BBD2-6B2AD54F96EF}</Project>
       <Name>BartekSzafko.TracAsistant</Name>
@@ -79,6 +80,10 @@
     <ProjectReference Include="..\Third Party\Machine.Specifications.AutoMocking\Source\Machine.Specifications.AutoMocking\Machine.Specifications.AutoMocking.csproj">
       <Project>{018BBBCD-B162-47EA-BF1A-03C568EEC7C8}</Project>
       <Name>Machine.Specifications.AutoMocking</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Third Party\Machine.Specifications\Source\Machine.Specifications\Machine.Specifications.csproj">
+      <Project>{CCD02629-1262-4F78-9E9F-AC97B942D0E7}</Project>
+      <Name>Machine.Specifications</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +103,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
