@@ -1,6 +1,9 @@
 ﻿using System;
 namespace BartekSzafko.TracAssistant.Domain
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface ITicket
     {
         string CC { get; set; }
